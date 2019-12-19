@@ -13,11 +13,24 @@ class Chapter1:
         characters = set()
         for character in string:
             if character in characters:
-                logging.info('There are repeated characters')
+                logging.info('There are repeated characters. %s repeats in %s', character, string )
                 return True
             characters.add( character )
-        logging.info('There are not repeated characters.')
+        logging.info('There are not repeated characters in string %s.', string )
         return False
+    def exercise1b_areRepeatedCharacters_noDataStructure( self, passedString):
+        import string
+        for letter in list(string.ascii_lowercase):
+            oneTimeApparison = False
+            for character in passedString:
+                if character == letter:
+                    if oneTimeApparison:
+                        logging.info('There are repeated characters. %s repeats in %s', character, passedString )
+                        return True
+                    oneTimeApparison = True 
+        logging.info('There are not repeated characters in string %s.', passedString )
+        return False
+ 
         
 def main():
     
@@ -31,7 +44,7 @@ def main():
     handler.setFormatter(formatter) 
     root.addHandler(handler)
     chapter1 = Chapter1()
-    chapter1.exercise1_areRepeatedCharacters('abc')
-    chapter1.exercise1_areRepeatedCharacters('aac')
+    chapter1.exercise1b_areRepeatedCharacters_noDataStructure('abc')
+    chapter1.exercise1b_areRepeatedCharacters_noDataStructure('aac')
 
 main()
